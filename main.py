@@ -118,7 +118,7 @@ if __name__ == "__main__":
     #
     #     setattr(g,'people', people)
     #     setattr(g, 'companies', companies)
-    app.config['DEBUG'] = True
+    #app.config['DEBUG'] = True
     app.config["people"] = loadjson("./resources/people.json")
     app.config["companies"] = loadjson("resources\\companies.json")
     # food=set()
