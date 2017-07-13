@@ -59,7 +59,7 @@ def getcompany(name):
             index = companies[i]['index']
             break
     if(index == -1):
-        return jsonify({"error": "wrong company name"})
+        return jsonify({"error": "wrong company name"}),400
     else:
         for i in range(len(people)):
             if (people[i]['company_id'] == index):
@@ -76,9 +76,9 @@ def getcommon():
     if request.is_json:
         p_data = request.get_json()
         if(len(p_data) != 2):
-            return jsonify(JSON_ERROR)
+            return jsonify(JSON_ERROR),400
         if not (check_persondata(p_data[0]) and check_persondata(p_data[1])):
-            return jsonify(JSON_ERROR)
+            return jsonify(JSON_ERROR),400
         l = len(people)
         p1 = None
         p2 = None
@@ -99,9 +99,9 @@ def getcommon():
                         result.append(people[i])
             return jsonify(result)
         else:
-            return jsonify(NOTFINDPERSON)
+            return jsonify(NOTFINDPERSON),400
     else:
-        return jsonify(JSON_ERROR)
+        return jsonify(JSON_ERROR),400
 
 # @app.route("/person/<name>")
 # def person(name):
@@ -118,6 +118,7 @@ if __name__ == "__main__":
     #
     #     setattr(g,'people', people)
     #     setattr(g, 'companies', companies)
+    app.config['DEBUG'] = True
     app.config["people"] = loadjson("./resources/people.json")
     app.config["companies"] = loadjson("resources\\companies.json")
     # food=set()
