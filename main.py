@@ -1,5 +1,5 @@
 from flask import Flask, current_app,jsonify,request
-from flask_debugtoolbar import DebugToolbarExtension
+#from flask_debugtoolbar import DebugToolbarExtension
 import json
 import os
 
@@ -16,7 +16,7 @@ NOTFINDPERSON={"error":"can not find the person with the same data you input"}
 
 app.debug = True
 app.config['SECRET_KEY'] = "\xcf\xa6\xe20P&\xd8\x86\xcf'\x863\x7f\xfb\xf9\x16\xd4\xf0\x9bj0\x07$`"
-toolbar = DebugToolbarExtension(app)
+#toolbar = DebugToolbarExtension(app)
 
 
 def takeset(peoplelist):
