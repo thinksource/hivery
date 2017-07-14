@@ -14,7 +14,7 @@ app = Flask(__name__, root_path=APP_ROOT)
 JSON_ERROR = {"error": "wrong format of json data received"}
 NOTFINDPERSON = {
     "error": "can not find the person with the same data you input"}
-
+JSON_NOPERSON={"error":"can not find correct person with provided person's name"}
 app.debug = True
 app.config['SECRET_KEY'] = "\xcf\xa6\xe20P&\xd8\x86\xcf'\x863\x7f\xfb\xf9\x16\xd4\xf0\x9bj0\x07$`"
 #toolbar = DebugToolbarExtension(app)
@@ -103,10 +103,23 @@ def getcommon():
     else:
         return jsonify(JSON_ERROR),400
 
-# @app.route("/person/<name>")
-# def person(name):
-#     fruits=set(['apple', 'orange', 'strawberry', 'banana'])
-#     vegetables=set(['celery', 'cucumber',  'carrot', 'beetroot'])
+@app.route("/user/<name>")
+def person(name):
+    fruits=set(['apple', 'orange', 'strawberry', 'banana'])
+    vegetables=set(['celery', 'cucumber',  'carrot', 'beetroot'])
+    people = app.config["people"]
+    for i in people:
+        if i['name']==name:
+            food=i["favouriteFood"]
+            f=[]
+            v=[]
+            for j in food:
+                if j in fruits:
+                    f.append(j)
+                elif j in vegetables:
+                    v.append(j)
+            return jsonify({'name': i['name'],'age': i['age'],  "fruits":f, "vegetables":v})
+    return jsonify(JSON_NOPERSON), 400
 
 
 if __name__ == "__main__":
