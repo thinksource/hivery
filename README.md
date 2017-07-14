@@ -22,6 +22,12 @@ service address: http://127.0.0.1:5000/common
 
 sample post json is samplerequest2.json
 
+- Same as feature2 but only  send just the user id. and return the user names
+
+service address: http://127.0.0.1:5000/commonid/id1/id2
+
+only array of user name as result
+
 - Given 1 people, provide a list of fruits and vegetables they like. This endpoint must respect this interface: { "username": "Ahi", "age":"30", "fruits":["banana", "apple"], "vegetables":["beetroot", "lettuce"]}
 
 service address: http://127.0.0.1:5000/user/username

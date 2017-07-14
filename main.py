@@ -15,6 +15,7 @@ JSON_ERROR = {"error": "wrong format of json data received"}
 NOTFINDPERSON = {
     "error": "can not find the person with the same data you input"}
 JSON_NOPERSON={"error":"can not find correct person with provided person's name"}
+JSON_IDERROR={"error":"the person id you input is out of the range of people.json's id"}
 app.debug = True
 app.config['SECRET_KEY'] = "\xcf\xa6\xe20P&\xd8\x86\xcf'\x863\x7f\xfb\xf9\x16\xd4\xf0\x9bj0\x07$`"
 #toolbar = DebugToolbarExtension(app)
@@ -90,7 +91,7 @@ def getcommon():
                and people[i]['address'] == p_data[1]['address'] and people[i]['phone'] == p_data[1]['phone']):
                 p2 = people[i]
         if (p1 and p2):
-            app.logger.debug(p1['friends'])
+            # app.logger.debug(p1['friends'])
             common_index = takeset(p1['friends']) & takeset(p2['friends'])
             result = []
             for i in range(l):
@@ -102,6 +103,26 @@ def getcommon():
             return jsonify(NOTFINDPERSON),400
     else:
         return jsonify(JSON_ERROR),400
+
+@app.route("/commonid/<strid1>/<strid2>")
+def getidcommon(strid1, strid2):
+    people = app.config["people"]
+    l = len(people)
+    id1=int(strid1)
+    id2=int(strid2)
+    if(id1<l and id1>0 and id2<l and id2>0):
+        p1 = people[id1]
+        p2 = people[id2]
+        common_index = takeset(p1['friends']) & takeset(p2['friends'])
+        result = []
+        for i in range(l):
+            if i in common_index:
+                if(people[i]["has_died"] == False and people[i]["eyeColor"] == "brown"):
+                    result.append(people[i]['name'])
+        return jsonify(result)
+    return jsonify(JSON_IDERROR),400
+
+
 
 @app.route("/user/<name>")
 def person(name):
