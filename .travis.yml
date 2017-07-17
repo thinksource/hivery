@@ -1,4 +1,8 @@
 language: python
+cache:
+  directories:
+  - "$HOME/.cache/pip"
+  - "$HOME/.pyenv"
 python:
   - "3.2"
   - "3.3"
