@@ -6,9 +6,53 @@ The project base on Flask and python3.6
 
 > pip install -r  requirements.txt
 
+
+###  about virtualenv and wrapper
+If you do not want to install flask globally you can use virtualenv and virtualenvwrapper
+
+
+>pip install virtualenv
+>$ pip install virtualenvwrapper
+>$ export WORKON_HOME=~/Envs
+>$ source /usr/local/bin/virtualenvwrapper.sh
+
+
+#### Basic Usage of virtualenv
+
+1,Create a virtual environment:
+
+>$ mkvirtualenv my_project
+
+This creates the my_project folder inside ~/Envs.
+
+2,Work on a virtual environment:
+
+>$ workon my_project
+
+Alternatively, you can make a project, which creates the virtual environment, and also a project directory inside $PROJECT_HOME, which is cd -ed into when you workon myproject.
+
+>$ mkproject myproject
+
+virtualenvwrapper provides tab-completion on environment names. It really helps when you have a lot of environments and have trouble remembering their names.
+
+workon also deactivates whatever environment you are currently in, so you can quickly switch between environments.
+
+3,Deactivating is still the same:
+
+>$ deactivate
+
+4,To delete:
+
+>$ rmvirtualenv venv
+
+
 ## How to run
 
 >python main.py
+
+## How to test
+
+> python test.py
 
 ## API intereface
 
