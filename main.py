@@ -1,6 +1,7 @@
 from flask import Flask, current_app, jsonify, request
 #from flask_debugtoolbar import DebugToolbarExtension
 import json
+import codecs
 import os
 
 
@@ -31,8 +32,9 @@ def takeset(peoplelist):
 
 
 def loadjson(filename):
+    reader = codecs.getreader("utf-8")
     with app.open_resource(filename) as f:
-        return json.load(str(f))
+        return json.load(reader(f))
 
 
 def check_persondata(data):
