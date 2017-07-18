@@ -12,8 +12,11 @@ If you do not want to install flask globally you can use virtualenv and virtuale
 
 
 >pip install virtualenv
+
 >$ pip install virtualenvwrapper
+
 >$ export WORKON_HOME=~/Envs
+
 >$ source /usr/local/bin/virtualenvwrapper.sh
 
 
