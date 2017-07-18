@@ -7,7 +7,7 @@ The project base on Flask and python3.6
 > pip install -r  requirements.txt
 
 
-###  about virtualenv and wrapper
+###  About virtualenv and wrapper
 If you do not want to install flask globally you can use virtualenv and virtualenvwrapper
 
 
@@ -39,6 +39,9 @@ Alternatively, you can make a project, which creates the virtual environment, an
 virtualenvwrapper provides tab-completion on environment names. It really helps when you have a lot of environments and have trouble remembering their names.
 
 workon also deactivates whatever environment you are currently in, so you can quickly switch between environments.
+
+only after you create your local python environment, you can do python install flask to install flask package in the local environment.
+
 
 3,Deactivating is still the same:
 
