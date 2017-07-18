@@ -31,7 +31,7 @@ def takeset(peoplelist):
 
 
 def loadjson(filename):
-    with app.open_resource(filename) as f:
+    with app.open_resource(str(filename)) as f:
         return json.load(f)
 
 
