@@ -31,8 +31,8 @@ def takeset(peoplelist):
 
 
 def loadjson(filename):
-    with app.open_resource(str(filename)) as f:
-        return json.load(f)
+    with app.open_resource(filename) as f:
+        return json.load(str(f))
 
 
 def check_persondata(data):
@@ -111,7 +111,7 @@ def getidcommon(strid1, strid2):
     l = len(people)
     id1 = int(strid1)
     id2 = int(strid2)
-    if(id1 < l and id1 > 0 and id2 < l and id2 > 0):
+    if(id1 < l and id1 >= 0 and id2 < l and id2 >= 0):
         p1 = people[id1]
         p2 = people[id2]
         common_index = takeset(p1['friends']) & takeset(p2['friends'])
