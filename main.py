@@ -123,7 +123,7 @@ def getidcommon(strid1, strid2):
         return jsonify(result)
     return jsonify(JSON_IDERROR), 400
 
-# Given 1 people, provide a list of fruits and vegetables they like. This endpoint must respect this interface for the output: 
+# Given 1 people, provide a list of fruits and vegetables they like. This endpoint must respect this interface for the output:
 # { "username": "Ahi", "age":"30", "fruits":["banana", "apple"], "vegetables":["beetroot", "lettuce"]}
 @app.route("/user/<name>")
 def person(name):
@@ -155,7 +155,7 @@ if __name__ == "__main__":
     #     setattr(g, 'companies', companies)
     #app.config['DEBUG'] = True
     app.config["people"] = loadjson("./resources/people.json")
-    app.config["companies"] = loadjson("resources\\companies.json")
+    app.config["companies"] = loadjson("resources/companies.json")
     # food=set()
     # for i in app.config["people"]:
     #     app.logger.debug(i["favouriteFood"])
